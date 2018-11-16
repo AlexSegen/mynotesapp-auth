@@ -10,6 +10,8 @@ const auth = require('../../middlewares/authorization')
   // Retrieve all Category
   router.get('/', auth(), categoriesController.findAll);
 
+  router.get('/user/', auth(), categoriesController.findUserAll);
+
   // Retrieve a single Category with categoryID
   router.get('/:categoryId', auth(), categoriesController.findOne);
 

@@ -1,5 +1,7 @@
 'use strict'
 
+const _ = require('underscore');
+
 const Category = require('../models/category.model.js');
 
 // Create and Save a new Category
@@ -15,7 +17,8 @@ exports.create = (req, res) =>{
     const category = new Category({
         title: req.body.title || "Untitled Category",
         picture: req.body.picture,
-        color: req.body.color
+        color: req.body.color,
+        userId: req.body.userId
     });
 
     // Save Category in the Database
@@ -44,6 +47,22 @@ exports.findAll = (req, res) => {
 
 
 };
+
+exports.findUserAll = (req, res) => {
+
+    Category.find()
+    .then(categories =>{
+        var userId = req.get('userId') || '';
+        res.send(categories.filter(function(filter){ return filter.userId == userId }));
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error ocurred while retrieving categories."
+        });
+    });
+
+
+};
+
 
 // Find a  single Category with a categoryId
 exports.findOne = (req, res) =>{
