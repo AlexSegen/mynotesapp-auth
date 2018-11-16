@@ -11,12 +11,12 @@ const auth = require('../../middlewares/authorization')
   router.get('/', auth(), categoriesController.findAll);
 
   // Retrieve a single Category with categoryID
-  router.get('/:categoryID', auth(), categoriesController.findOne);
+  router.get('/:categoryId', auth(), categoriesController.findOne);
 
   //Update a Category with categoryID
-  router.put('/:categoryID', auth(), categoriesController.update);
+  router.put('/:categoryId', auth(), categoriesController.update);
 
   //Delete a Category with categoryID
-  router.delete('/:categoryID', auth(), categoriesController.delete);
+  router.delete('/:categoryId', auth(), categoriesController.delete);
 
 module.exports = router
