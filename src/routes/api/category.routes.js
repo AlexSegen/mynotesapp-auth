@@ -5,18 +5,18 @@ const categoriesController = require('../../controllers/categories.controller');
 const auth = require('../../middlewares/authorization')
 
   //Create a new Category
-  router.post('/', categoriesController.create);
+  router.post('/', auth(), categoriesController.create);
 
   // Retrieve all Category
   router.get('/', auth(), categoriesController.findAll);
 
   // Retrieve a single Category with categoryID
-  router.get('/:categoryID', categoriesController.findOne);
+  router.get('/:categoryID', auth(), categoriesController.findOne);
 
   //Update a Category with categoryID
-  router.put('/:categoryID', categoriesController.update);
+  router.put('/:categoryID', auth(), categoriesController.update);
 
   //Delete a Category with categoryID
-  router.delete('/:categoryID', categoriesController.delete);
+  router.delete('/:categoryID', auth(), categoriesController.delete);
 
 module.exports = router
