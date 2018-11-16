@@ -26,6 +26,8 @@ app.use('/api', apiRouter)
 app.use(errorHandler.handleNotFound)
 app.use(errorHandler.handleError)
 
+//require('../routes/api/note.routes.js')(app);
+
 exports.start = () => {
   app.listen(config.port, (err) => {
     if (err) {
